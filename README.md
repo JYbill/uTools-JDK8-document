@@ -64,5 +64,5 @@
 
 [Github：https://github.com/JYbill/uTools-JDK8-document](https://github.com/JYbill/uTools-JDK8-document)
 
-[Gitee：https://gitee.com/JYbill/uTools-jdk8-document](https://github.com/JYbill/uTools-JDK8-document)
+[Gitee：https://gitee.com/JYbill/uTools-jdk8-document](https://gitee.com/JYbill/uTools-jdk8-document#%E4%BB%93%E5%BA%93)
 
