@@ -56,3 +56,13 @@
   1. 因为`uTools`一个插件只支持一个页面，要么使用`单页面富应用`，要么使用`<iframe>/<frame>`
   2. 使用`Java/Node`爬虫，爬取相关信息转成`Json`，再读取信息并渲染
 
+
+
+
+
+## 仓库
+
+[Github：https://github.com/JYbill/uTools-JDK8-document](https://github.com/JYbill/uTools-JDK8-document)
+
+[Gitee：https://gitee.com/JYbill/uTools-jdk8-document](https://github.com/JYbill/uTools-JDK8-document)
+
