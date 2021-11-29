@@ -25,21 +25,6 @@
 
 
 
-
-## 问题
-
-移植`引用文档的项目`所以，`使用`超链接有些文件缺失，所以`使用标签尽量别点`，点了出现`Nginx 404`点击首页返回
-
-![image-20211128232510638](https://gitee.com/JYbill/typroa_pic/raw/master//uTools-JDK8-document/image-20211128232510638.png)
-
-![image-20211128232524816](https://gitee.com/JYbill/typroa_pic/raw/master//uTools-JDK8-document/image-20211128232524816.png)
-
-![image-20211128232557568](https://gitee.com/JYbill/typroa_pic/raw/master//uTools-JDK8-document/image-20211128232557568.png)
-
-
-
-
-
 ## 想说的
 
 > 可能有大佬眼熟，搜索的样式，没错就是仿`Vue`官网的样式，所以后续可能会使用`爬虫 + Flutter3.0/Vue3.0`再开发。
