@@ -1,0 +1,12 @@
+{
+  "main": "index.html",
+  "preload": "preload.js",
+  "logo": "logo.png",
+	"features": [
+		{
+		  "code": "jdk",
+		  "explain": "yo. 这是JDK8 DOC",
+			"cmds":["8", "jdk", "Jdk8", "Java", "java", "jvav"]
+		}
+	]
+}
