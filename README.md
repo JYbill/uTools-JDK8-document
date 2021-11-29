@@ -43,3 +43,6 @@
 
 [Gitee：https://gitee.com/JYbill/uTools-jdk8-document](https://gitee.com/JYbill/uTools-jdk8-document)
 
+
+## 使用
+将`jdk-1.0.1.upx`文件拖入uTools内输入JDK即可食用
