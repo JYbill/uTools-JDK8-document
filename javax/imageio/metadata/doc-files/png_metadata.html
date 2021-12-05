@@ -1,4 +1,6 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
 <!--
 Copyright (c) 2000, 2005, Oracle and/or its affiliates. All rights reserved.
 ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -22,25 +24,83 @@ ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 
 
 
---> 
-<title>PNG Metadata Format Specification</title>   
-<center> 
- <h1> PNG Metadata Format Specification </h1> 
-</center> 
-<p> The PNG native format encodes the complete contents of a PNG file chunk by chunk, except for the IDAT chunks that contain the actual image data. Chunks that are not defined in the PNG 1.2 specification are stored under the <code>UnknownChunks</code> element. Note that it is the responsibility of application software to implement the rules for PNG readers, writers, and editors (<i>e.g.</i>, the rules concerning unsafe-to-copy chunks) described in the PNG specification. The Image I/O library is not, in and of itself, a PNG reader, writer, or editor in the sense of the specification. Rather, it is a tool that may be used to build PNG readers, writers, and editors. </p> 
-<p> The image's actual width, height, bit depth, and color type will override any values passed to the writer via metadata, with one exception. If the image has an <code>IndexColorModel</code>, the color table entries will be checked to determine if they form a uniform grayscale ramp. If so, the image will normally be encoded using as grayscale instead of palette color. However, if the color type set in the metadata is "Palette", palette color will be used. </p> 
-<p> If no metadata is supplied when encoding an image, the header is initialized from the image being encoded, and no optional chunks are included. </p> 
-<p> The semantics of the standard chunks are described in the <a href="http://www.libpng.org/pub/png/spec/">PNG specification</a>. Note that there are some restrictions on which chunks may appear for each color type. In particular, </p> 
-<ul> 
- <li>A <code>PLTE</code> chunk may not appear in a <code>Gray</code> or <code>GrayAlpha</code> image </li> 
- <li><code>hIST</code> and <code>tRNS</code> chunks require a prior <code>PLTE</code> chunk </li> 
- <li>A <code>tRNS</code> chunk may not appear in <code>GrayAlpha</code> and <code>RGBA</code> images </li> 
-</ul> The child nodes of the 
-<code>bKGD</code>, 
-<code>sBIT</code>, and 
-<code>tRNS</code> chunks must match the image's color type. 
-<p> Certain chunks may meaningfully appear multiple times in a PNG file, in particular the text-related chunks. In order to simplify the metadata format, multiple instances of these chunks are consolidated under a single parent node (<i>e.g.</i>, the <code>tEXt</code> node), which may have zero or more children (<i>e.g.</i>, <code>tEXtEntry</code> nodes). If no children are present, no chunk will be written. Similarly, unknown chunks are stored as children of a single <code>UnknownChunks</code> node. </p> 
-<p> It is not possible to control the ordering of the chunks as they are written, or to determine the order of the chunks in a file being read. </p> 
+-->
+
+<title>PNG Metadata Format Specification</title>
+</head>
+
+<body bgcolor="white">
+
+<center><h1>
+PNG Metadata Format Specification
+</h1></center>
+
+<p>
+
+The PNG native format encodes the complete contents of a PNG file
+chunk by chunk, except for the IDAT chunks that contain the actual
+image data.  Chunks that are not defined in the PNG 1.2 specification
+are stored under the <code>UnknownChunks</code> element.  Note that it
+is the responsibility of application software to implement the rules
+for PNG readers, writers, and editors (<i>e.g.</i>, the rules
+concerning unsafe-to-copy chunks) described in the PNG specification.
+The Image I/O library is not, in and of itself, a PNG reader, writer,
+or editor in the sense of the specification.  Rather, it is a tool
+that may be used to build PNG readers, writers, and editors.
+
+<p>
+
+The image's actual width, height, bit depth, and color type will
+override any values passed to the writer via metadata, with one
+exception.  If the image has an <code>IndexColorModel</code>, the
+color table entries will be checked to determine if they form a
+uniform grayscale ramp. If so, the image will normally be encoded
+using as grayscale instead of palette color.  However, if the color
+type set in the metadata is "Palette", palette color will be used.
+
+<p>
+ 
+If no metadata is supplied when encoding an image, the header is
+initialized from the image being encoded, and no optional chunks are
+included.
+
+<p>
+
+The semantics of the standard chunks are described in the <A
+HREF="http://www.libpng.org/pub/png/spec/">PNG specification</A>.
+Note that there are some restrictions on which chunks may appear
+for each color type. In particular,
+
+<ul>
+  <li>A <code>PLTE</code> chunk may not appear in a <code>Gray</code>
+or <code>GrayAlpha</code> image
+
+  <li><code>hIST</code> and <code>tRNS</code> chunks require a prior
+<code>PLTE</code> chunk
+
+  <li>A <code>tRNS</code> chunk may not appear in
+<code>GrayAlpha</code> and <code>RGBA</code> images
+</ul>
+
+The child nodes of the <code>bKGD</code>, <code>sBIT</code>, and
+<code>tRNS</code> chunks must match the image's color type.
+
+<p> 
+
+Certain chunks may meaningfully appear multiple times in a PNG file,
+in particular the text-related chunks.  In order to simplify the
+metadata format, multiple instances of these chunks are consolidated
+under a single parent node (<i>e.g.</i>, the <code>tEXt</code> node),
+which may have zero or more children (<i>e.g.</i>,
+<code>tEXtEntry</code> nodes).  If no children are present, no chunk
+will be written.  Similarly, unknown chunks are stored as children of
+a single <code>UnknownChunks</code> node.
+
+<p>
+
+It is not possible to control the ordering of the chunks as they are
+written, or to determine the order of the chunks in a file being read.
+
 <pre>
 &lt;!DOCTYPE "javax_imageio_png_1.0" [
 
@@ -503,3 +563,6 @@ ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
           &lt;!-- Data type: String --&gt;
 ]&gt;
 </pre>
+
+</body>
+</html>

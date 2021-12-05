@@ -1,4 +1,6 @@
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"> 
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
 <!--
 Copyright (c) 2000, 2012, Oracle and/or its affiliates. All rights reserved.
 ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
@@ -22,18 +24,39 @@ ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
 
 
 
---> 
-<title>GIF Metadata Format Specification</title>   
-<center> 
- <h1> GIF Metadata Format Specification </h1> 
-</center> 
-<a name="gif_stream_metadata_format"> 
- <center> 
-  <h2> GIF Stream Metadata Format Specification </h2> 
- </center> </a> 
-<p> The GIF stream metadata format encodes the information stored in the per-file header, namely the file version, logical screen descriptor, and the global color table. </p> 
-<p> The logical screen descriptor describes the overall width and height of an animated file, as well as information about the color resolution (number of bits per pixel) and pixel aspect ratio. </p> 
-<p> The global color table contains a color lookup table that is used for images that do not have their own local color table. </p> 
+-->
+
+<title>GIF Metadata Format Specification</title>
+</head>
+
+<body bgcolor="white">
+
+<center><h1>
+GIF Metadata Format Specification
+</h1></center>
+
+<a name="gif_stream_metadata_format">
+<center><h2>
+GIF Stream Metadata Format Specification
+</h2></center>
+</a>
+<p>
+
+The GIF stream metadata format encodes the information stored in the
+per-file header, namely the file version, logical screen descriptor,
+and the global color table.
+
+<p>
+
+The logical screen descriptor describes the overall width and height
+of an animated file, as well as information about the color resolution
+(number of bits per pixel) and pixel aspect ratio.
+
+<p>
+
+The global color table contains a color lookup table that is used for
+images that do not have their own local color table.
+
 <pre>
 &lt;!DOCTYPE "javax_imageio_gif_stream_1.0" [
 
@@ -112,16 +135,50 @@ ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
           &lt;!-- Min value: 0 (inclusive) --&gt;
           &lt;!-- Max value: 255 (inclusive) --&gt;
 ]&gt;
-</pre> 
-<a name="gif_image_metadata_format"> 
- <center> 
-  <h2> GIF Image Metadata Format Specification </h2> 
- </center> </a> 
-<p> The GIF image metadata format encodes the image descriptor, local color table, and extension information assciated with a single image within a GIF file, typically a frame of an animation. </p> 
-<p> The image description contains the offset of the frame within the logical screen described in the stream metadata, as well as the width and height of the frame and whether it is used interlaced encoding. </p> 
-<p> The local color table, if present, supersedes the global color table for the frame at hand. </p> 
-<p> The graphic control extension contains information on how the frame is to be incorporated into the animation. The disposal method indicates whether the current frame should remain in place (<code>doNotDispose</code>), be restored to the backgound color as specified in the stream metadata (<code>restoreToBackgroundColor</code>), or be restored to the previous frame contents (<code>restoreToPrevious</code>) prior to displaying the subsequent frame. </p> 
-<p> The user input flag indicates whether the animation should pause for user input before advancing to the next frame. The transparent color flag and index indicate a color index for which pixels of the frame should not be drawn. The delay time indicates how long the frame should be displayed, in hundredths of a second. If the user input flag is set and the delay time is 0, the frame is intended to be advanced only on user input. </p> 
+</pre>
+<a name="gif_image_metadata_format">
+<center><h2>
+GIF Image Metadata Format Specification
+</h2></center>
+</a>
+<p>
+
+The GIF image metadata format encodes the image descriptor, local
+color table, and extension information assciated with a single image
+within a GIF file, typically a frame of an animation.
+
+<p>
+
+The image description contains the offset of the frame within the
+logical screen described in the stream metadata, as well as the width
+and height of the frame and whether it is used interlaced encoding.
+
+<p>
+
+The local color table, if present, supersedes the global color table
+for the frame at hand.
+
+<p>
+
+The graphic control extension contains information on how the frame is
+to be incorporated into the animation.  The disposal method indicates
+whether the current frame should remain in place
+(<code>doNotDispose</code>), be restored to the backgound color as
+specified in the stream metadata
+(<code>restoreToBackgroundColor</code>), or be restored to the
+previous frame contents (<code>restoreToPrevious</code>) prior to
+displaying the subsequent frame.
+
+<p>
+
+The user input flag indicates whether the animation should pause for
+user input before advancing to the next frame.  The transparent color
+flag and index indicate a color index for which pixels of the frame
+should not be drawn.  The delay time indicates how long the frame
+should be displayed, in hundredths of a second.  If the user input
+flag is set and the delay time is 0, the frame is intended to be
+advanced only on user input.
+
 <pre>
 &lt;!DOCTYPE "javax_imageio_gif_image_1.0" [
 
@@ -292,105 +349,105 @@ ORACLE PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
           &lt;!-- The comment --&gt;
           &lt;!-- Data type: String --&gt;
 ]&gt;
-</pre> 
-<p> <a name="mapping"> </a></p> 
-<center> 
- <a name="mapping"> 
-  <table border="1"> 
-   <caption> 
-    <b>Mapping of Standard to GIF Native Stream Metadata</b> 
-   </caption> 
-   <tbody> 
-    <tr> 
-     <th>Standard Metadata Component</th> 
-     <th>GIF Native Stream Metadata Component</th> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@index</td> 
-     <td>/GlobalColorTable/ColorTableEntry@index</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@red</td> 
-     <td>/GlobalColorTable/ColorTableEntry@red</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@green</td> 
-     <td>/GlobalColorTable/ColorTableEntry@green</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@blue</td> 
-     <td>/GlobalColorTable/ColorTableEntry@blue</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/BackgroundIndex@value</td> 
-     <td>/GlobalColorTable@backgroundColorIndex</td> 
-    </tr> 
-    <tr> 
-     <td>/Data/BitsPerSample@value</td> 
-     <td>/LogicalScreenDescriptor@colorResolution</td> 
-    </tr> 
-    <tr> 
-     <td>/Dimension/PixelAspectRatio@value</td> 
-     <td>/LogicalScreenDescriptor@pixelAspectRatio</td> 
-    </tr> 
-    <tr> 
-     <td>/Dimension/HorizontalScreenSize@value</td> 
-     <td>/LogicalScreenDescriptor@logicalScreenWidth</td> 
-    </tr> 
-    <tr> 
-     <td>/Dimension/VerticalScreenSize@value</td> 
-     <td>/LogicalScreenDescriptor@logicalScreenHeight</td> 
-    </tr> 
-    <tr> 
-     <td>/Document/FormatVersion@value</td> 
-     <td>/Version@value</td> 
-    </tr> 
-   </tbody> 
-  </table> </a> 
-</center> 
-<a name="mapping"> <p></p> <p> </p> 
- <center> 
-  <table border="1"> 
-   <caption> 
-    <b>Mapping of Standard to GIF Native Image Metadata</b> 
-   </caption> 
-   <tbody> 
-    <tr> 
-     <th>Standard Metadata Component</th> 
-     <th>GIF Native Image Metadata Component</th> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@index</td> 
-     <td>/LocalColorTable/ColorTableEntry@index</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@red</td> 
-     <td>/LocalColorTable/ColorTableEntry@red</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@green</td> 
-     <td>/LocalColorTable/ColorTableEntry@green</td> 
-    </tr> 
-    <tr> 
-     <td>/Chroma/Palette/PaletteEntry@blue</td> 
-     <td>/LocalColorTable/ColorTableEntry@blue</td> 
-    </tr> 
-    <tr> 
-     <td>/Dimension/HorizontalPixelOffset@value</td> 
-     <td>/ImageDescriptor@imageLeftPosition</td> 
-    </tr> 
-    <tr> 
-     <td>/Dimension/VerticalPixelOffset@value</td> 
-     <td>/ImageDescriptor@imageTopPosition</td> 
-    </tr> 
-    <tr> 
-     <td>/Text/TextEntry@value</td> 
-     <td>/CommentExtensions/CommentExtension@value</td> 
-    </tr> 
-    <tr> 
-     <td>/Transparency/TransparentIndex@value</td> 
-     <td>/GraphicControlExtension@transparentColorIndex (/GraphicControlExtension@transparentColorFlag is also set to "TRUE")</td> 
-    </tr> 
-   </tbody> 
-  </table> 
- </center> </a>
+</pre>
+
+<p>
+<a name="mapping">
+<center>
+<table border=1>
+<caption><b>Mapping of Standard to GIF Native Stream Metadata</b></caption>
+<tr>
+<th>Standard Metadata Component</th>
+<th>GIF Native Stream Metadata Component</th>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@index</td>
+<td>/GlobalColorTable/ColorTableEntry@index</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@red</td>
+<td>/GlobalColorTable/ColorTableEntry@red</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@green</td>
+<td>/GlobalColorTable/ColorTableEntry@green</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@blue</td>
+<td>/GlobalColorTable/ColorTableEntry@blue</td>
+</tr>
+<tr>
+<td>/Chroma/BackgroundIndex@value</td>
+<td>/GlobalColorTable@backgroundColorIndex</td>
+</tr>
+<tr>
+<td>/Data/BitsPerSample@value</td>
+<td>/LogicalScreenDescriptor@colorResolution</td>
+</tr>
+<tr>
+<td>/Dimension/PixelAspectRatio@value</td>
+<td>/LogicalScreenDescriptor@pixelAspectRatio</td>
+</tr>
+<tr>
+<td>/Dimension/HorizontalScreenSize@value</td>
+<td>/LogicalScreenDescriptor@logicalScreenWidth</td>
+</tr>
+<tr>
+<td>/Dimension/VerticalScreenSize@value</td>
+<td>/LogicalScreenDescriptor@logicalScreenHeight</td>
+</tr>
+<tr>
+<td>/Document/FormatVersion@value</td>
+<td>/Version@value</td>
+</tr>
+</table>
+</center>
+</p>
+
+<p>
+<center>
+<table border=1>
+<caption><b>Mapping of Standard to GIF Native Image Metadata</b></caption>
+<tr>
+<th>Standard Metadata Component</th>
+<th>GIF Native Image Metadata Component</th>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@index</td>
+<td>/LocalColorTable/ColorTableEntry@index</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@red</td>
+<td>/LocalColorTable/ColorTableEntry@red</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@green</td>
+<td>/LocalColorTable/ColorTableEntry@green</td>
+</tr>
+<tr>
+<td>/Chroma/Palette/PaletteEntry@blue</td>
+<td>/LocalColorTable/ColorTableEntry@blue</td>
+</tr>
+<tr>
+<td>/Dimension/HorizontalPixelOffset@value</td>
+<td>/ImageDescriptor@imageLeftPosition</td>
+</tr>
+<tr>
+<td>/Dimension/VerticalPixelOffset@value</td>
+<td>/ImageDescriptor@imageTopPosition</td>
+</tr>
+<tr>
+<td>/Text/TextEntry@value</td>
+<td>/CommentExtensions/CommentExtension@value</td>
+</tr>
+<tr>
+<td>/Transparency/TransparentIndex@value</td>
+<td>/GraphicControlExtension@transparentColorIndex
+(/GraphicControlExtension@transparentColorFlag is also set to
+"TRUE")</td>
+</tr>
+</table>
+</center>
+
+</body>
+</html>
